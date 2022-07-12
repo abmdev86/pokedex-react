@@ -1,12 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-
+import AppTheme from "components/AppThemeComponent/AppTheme";
+import "./App.css";
+import Container from "@mui/material/Container";
+import { Typography } from "@mui/material";
 function App() {
-  return (
-    <div className="App">
-     <h1>Pokedex</h1>
-    </div>
-  );
+  return <Typography variant="h1">Hello World</Typography>;
 }
 
 export default App;

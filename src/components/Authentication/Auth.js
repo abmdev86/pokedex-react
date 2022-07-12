@@ -1,7 +1,13 @@
+import Grid from "@mui/material/Grid";
+
 import React from "react";
 
 const Auth = () => {
-  return <div>Auth</div>;
+  return (
+    <Grid item xs={8}>
+      This is the Auth page
+    </Grid>
+  );
 };
 
 export default Auth;

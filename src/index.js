@@ -9,25 +9,16 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import Auth from "components/Authentication/Auth";
-import Pokedex from "components/Pokedex/Pokedex";
-import Roster from "components/Roster/Roster";
-import Battle from "components/Battle/Battle";
-import CreateMonster from "components/CreateMonster/CreateMonster";
-import News from "components/News/News";
-
+import Elements from "components";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="authenticate" element={<Auth />} />
-          <Route path="pokedex" element={<Pokedex />} />
-          <Route path="roster" element={<Roster />} />
-          <Route path="battle" element={<Battle />} />
-          <Route path="create" element={<CreateMonster />} />
-          <Route path="news" element={<News />} />
+          {Elements.map((item) => (
+            <Route path={item.path} element={item.element} />
+          ))}
         </Route>
       </Routes>
     </BrowserRouter>

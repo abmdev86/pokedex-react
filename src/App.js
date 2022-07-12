@@ -1,9 +1,17 @@
-import AppTheme from "components/AppThemeComponent/AppTheme";
-import "./App.css";
 import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
+import { Divider, Grid } from "@mui/material";
+import Navbar from "components/Navbar/Navbar";
+import { Outlet } from "react-router-dom";
 function App() {
-  return <Typography variant="h1">Hello World</Typography>;
+  return (
+    <Container maxWidth="xl">
+      <Divider />
+      <Grid container spacing={2}>
+        <Navbar />
+        <Outlet />
+      </Grid>
+    </Container>
+  );
 }
 
 export default App;

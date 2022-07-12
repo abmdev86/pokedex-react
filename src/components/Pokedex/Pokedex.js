@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import Grid from "@mui/material/Grid";
 
 const Pokedex = () => {
-  return (
-    <div>Pokedex</div>
-  )
-}
+  return <Grid item>Pokedex</Grid>;
+};
 
-export default Pokedex
+export default Pokedex;

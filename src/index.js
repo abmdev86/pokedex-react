@@ -21,13 +21,14 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="authenticate" element={<Auth />} />
-        <Route path="pokedex" element={<Pokedex />} />
-        <Route path="roster" element={<Roster />} />
-        <Route path="battle" element={<Battle />} />
-        <Route path="create" element={<CreateMonster />} />
-        <Route path="news" element={<News />} />
+        <Route path="/" element={<App />}>
+          <Route path="authenticate" element={<Auth />} />
+          <Route path="pokedex" element={<Pokedex />} />
+          <Route path="roster" element={<Roster />} />
+          <Route path="battle" element={<Battle />} />
+          <Route path="create" element={<CreateMonster />} />
+          <Route path="news" element={<News />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

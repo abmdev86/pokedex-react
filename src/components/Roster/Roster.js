@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import Grid from "@mui/material/Grid";
 
 const Roster = () => {
-  return (
-    <div>Roster</div>
-  )
-}
+  return <Grid item>Roster</Grid>;
+};
 
-export default Roster
+export default Roster;

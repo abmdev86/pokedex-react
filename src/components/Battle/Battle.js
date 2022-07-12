@@ -1,8 +1,9 @@
+import  Grid  from '@mui/material/Grid'
 import React from 'react'
 
 const Battle = () => {
   return (
-    <div>Battle</div>
+    <Grid item>Battle</Grid>
   )
 }
 

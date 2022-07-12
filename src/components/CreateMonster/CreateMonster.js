@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import Grid from "@mui/material/Grid";
 
 const CreateMonster = () => {
-  return (
-    <div>CreateMonster</div>
-  )
-}
+  return <Grid item>CreateMonster</Grid>;
+};
 
-export default CreateMonster
+export default CreateMonster;

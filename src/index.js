@@ -1,28 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { appTheme } from "appTheme";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { ThemeProvider } from "@mui/material/styles";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import Elements from "components";
+import routerRoutes from "mainRouter";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <ThemeProvider theme={appTheme}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          {Elements.map((item) => (
-            <Route path={item.path} element={item.element} />
+          {routerRoutes.map((item) => (
+            <Route path={item.path} key={item.id} element={item.element} />
           ))}
         </Route>
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

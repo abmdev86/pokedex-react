@@ -1,12 +1,13 @@
 FROM node:18
 
+WORKDIR /usr/src
 
-WORKDIR /src
+COPY . package*json
 
 COPY . .
 
-RUN npm i 
+RUN npm install 
+
+EXPOSE 3000
 
 CMD ["npm", "start"]
-
-EXPOSE 8080

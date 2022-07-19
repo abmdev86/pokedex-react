@@ -32,7 +32,7 @@ export const mainNavBarItems = [
     route: "battle",
   },
   {
-    id: 2,
+    id: 4,
     icon: <CreateIcon />,
     label: "Create Monster",
     route: "create",

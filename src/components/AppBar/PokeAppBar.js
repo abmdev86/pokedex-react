@@ -31,7 +31,6 @@ const PokeAppBar = ({ isLoggedIn }) => {
             }}
           />
           <Typography
-            nowrap
             variant="h6"
             sx={{
               mr: 2,

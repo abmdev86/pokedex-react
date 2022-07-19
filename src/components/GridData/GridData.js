@@ -17,18 +17,18 @@ const colDef = [
 export default function GridData() {
   const [row, setRow] = useState([]);
 
-  useEffect(() => {
-    P.getPokemonByName("eevee")
-      .then((res) => {
-        let rowData = new PokedexRowData(res.id, res.name, res.is_Main_Series);
-        setRow(() => {
-          row.push(rowData);
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [row]);
+  // useEffect(() => {
+  //   P.getPokemonByName("eevee")
+  //     .then((res) => {
+  //       let rowData = new PokedexRowData(res.id, res.name, res.is_Main_Series);
+  //       setRow(() => {
+  //         row.push(rowData);
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [row]);
   return (
     <Box
       sx={{
@@ -39,11 +39,11 @@ export default function GridData() {
       }}
     >
       <DataGrid
+        autoHeight
         sx={{
           display: "flex",
           padding: "2rem",
         }}
-        autoHeight
         rows={row}
         columns={colDef}
       />

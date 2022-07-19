@@ -13,7 +13,6 @@ function App() {
       sx={{
         justifyContent: "center",
       }}
-      container
     >
       <PokeAppBar />
       <Navbar />

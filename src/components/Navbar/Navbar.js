@@ -18,7 +18,7 @@ const Navbar = () => {
       <List>
         {mainNavBarItems.map((item, index) => (
           <ListItem key={item.id}>
-            <ListItemButton onClick={() => navigate(item.route)}>
+            <ListItemButton onClick={() => navigate(item.route)} key={index}>
               <ListItemIcon sx={navbarStyles.icons}>{item.icon}</ListItemIcon>
               <ListItemText sx={navbarStyles.text} primary={item.label} />
             </ListItemButton>

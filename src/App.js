@@ -1,19 +1,25 @@
 import Grid from "@mui/material/Grid";
 import Navbar from "components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
-import React, { useState } from "react";
+//import React, { useState } from "react";
 import PokeAppBar from "components/AppBar/PokeAppBar";
 import Box from "@mui/material/Box";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  //const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <Grid container spacing={2}>
+    <Grid
+      sx={{
+        justifyContent: "center",
+      }}
+      container
+    >
       <PokeAppBar />
-     
       <Navbar />
-      <Outlet />
+      <Box>
+        <Outlet />
+      </Box>
     </Grid>
   );
 }

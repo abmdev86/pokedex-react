@@ -11,10 +11,25 @@ import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 
 const PokeAppBar = ({ isLoggedIn }) => {
   return (
-    <AppBar position="absolute">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <CatchingPokemonIcon />
+    <AppBar>
+      <Container
+        maxWidth="xl"
+        sx={{
+          margin: "auto",
+        }}
+      >
+        <Toolbar
+          disableGutters
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <CatchingPokemonIcon
+            sx={{
+              marginRight: "auto",
+            }}
+          />
           <Typography
             nowrap
             variant="h6"
@@ -26,19 +41,20 @@ const PokeAppBar = ({ isLoggedIn }) => {
               letterSpacing: ".3rem",
               color: "red",
               textDecoration: "none",
+              margin: "auto",
+              alignSelf: "center",
             }}
           >
             PKMR
           </Typography>
-
-          <Box>
-            <Avatar
-              sx={{
-                padding: ".3rem",
-              }}
-              alt="Remy Sharp"
-              src="#"
-            />
+          <Box
+            sx={{
+              padding: ".3rem",
+              marginLeft: "auto",
+              paddingBlock: 0,
+            }}
+          >
+            <Avatar alt="Remy Sharp" src="#" />
           </Box>
         </Toolbar>
       </Container>

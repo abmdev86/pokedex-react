@@ -9,6 +9,8 @@ import {
   IconButton,
   Collapse,
   Typography,
+  TablePagination,
+  TableFooter,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import data from "../Data/pokedex.json";
@@ -80,14 +82,12 @@ function PokeDataRow(props) {
             {open ? <KeyboardArrowUpOutlined /> : <KeyboardArrowDownOutlined />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
-          {pokemon.id}
-        </TableCell>
+        <TableCell>{pokemon.id}</TableCell>
         <TableCell align="right">{pokemon.name.english}</TableCell>
         <TableCell align="right">{pokemon.type}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={2}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
@@ -97,18 +97,16 @@ function PokeDataRow(props) {
                 <TableHead>
                   <TableRow>
                     <TableCell>HP</TableCell>
-                    <TableCell align="right">Attack</TableCell>
-                    <TableCell align="right">Defense</TableCell>
-                    <TableCell align="right">Special Attack</TableCell>
-                    <TableCell align="right">Special Defense</TableCell>
-                    <TableCell align="right">Speed</TableCell>
+                    <TableCell>Attack</TableCell>
+                    <TableCell>Defense</TableCell>
+                    <TableCell>Special Attack</TableCell>
+                    <TableCell>Special Defense</TableCell>
+                    <TableCell>Speed</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   <TableRow>
-                    <TableCell component="th" scope="row">
-                      {pokemon.base.hp}
-                    </TableCell>
+                    <TableCell>{pokemon.base.hp}</TableCell>
                     <TableCell>{pokemon.base.attack}</TableCell>
                     <TableCell>{pokemon.base.defense}</TableCell>
                     <TableCell>{pokemon.base.specialAtk}</TableCell>
@@ -147,7 +145,18 @@ PokeDataRow.propTypes = {
 };
 export default function PokemonList() {
   const [pokedex, setPokedex] = useState(getPokemonJson());
+  const [page, setPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
+  const handleChangePage = (event, newPage) => {
+    event.preventDefault();
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value), 10);
+    setPage(0);
+  };
   return (
     <TableContainer component={Paper}>
       <Table
@@ -163,10 +172,28 @@ export default function PokemonList() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {pokedex.map((pokemon) => (
+          {(rowsPerPage > 0
+            ? pokedex.slice(
+                page * rowsPerPage,
+                page * rowsPerPage + rowsPerPage
+              )
+            : pokedex
+          ).map((pokemon) => (
             <PokeDataRow key={pokemon.name.english} pokemon={pokemon} />
           ))}
         </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TablePagination
+              count={pokedex.length}
+              page={page}
+              rowsPerPage={rowsPerPage}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              component={Paper}
+            />
+          </TableRow>
+        </TableFooter>
       </Table>
     </TableContainer>
   );

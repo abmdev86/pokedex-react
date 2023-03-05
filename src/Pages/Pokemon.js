@@ -14,7 +14,15 @@ export default function Pokemon() {
     setCurrentPokemon(null);
     const getCurrentPokemon = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BASEURL}${name}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_BASEURL}${name}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        );
 
         if (response.ok) {
           let newPokemonData = await response.json();

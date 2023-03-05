@@ -12,7 +12,7 @@ function App() {
   };
 
   return (
-    <PokedexMenu handlePokemonList={handleShowPokedex}>
+    <PokedexMenu handleShowPokemonList={handleShowPokedex}>
       {isPokedex ? <Pokedex /> : null}
     </PokedexMenu>
   );

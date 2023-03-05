@@ -1,6 +1,6 @@
-import { Box, Button, Paper, Stack } from "@mui/material";
+import { Box, Button, Container, Paper, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
-
+import '../App.css'
 export default function Pokedex() {
     const [pokemonList, setPokemonList] = useState([]);
     const [next, setNext] = useState(null);
@@ -79,25 +79,28 @@ export default function Pokedex() {
     }
 
     return (
-        <div>
+        <Container maxWidth="sm">
             {
                 !isLoading ? (
-                    <div>
-                        <Stack>
+                    <Container maxWidth="sm" sx={{ marginBottom: 6, paddingBottom: 2, }}>
+                        <Stack spacing={2}>
                             {pokemonList?.map((p, index) => (
-                                <Paper key={index}>{p.name}</Paper>
+                                <Box key={index} sx={{ textAlign: 'center' }}>
+                                    <Paper key={index} square elevation={13}>{p.name}</Paper>
+
+                                </Box>
                             ))}
                         </Stack>
-                        <Box>
-                            <Button variant="outline" onClick={handleNext} >Next</Button>
-                            <Button variant="outline" onClick={handlePrevious} >Previous</Button>
+                        <Box sx={{ margin: 'auto', p: 2, display: { sm: 'block', md: 'flex', }, textAlign: 'center' }}>
+                            <Button className="pokedex--btn" variant="contained" onClick={handlePrevious} sx={{ margin: '.5em' }} >Previous</Button>
+                            <Button className="pokedex--btn" variant="contained" onClick={handleNext} sx={{ margin: '.5em' }}  >Next</Button>
 
                         </Box>
-                    </div>) : (
+                    </Container>) : (
                     <div>LOADING....</div>
                 )
             }
-        </div>
+        </Container>
     )
 
 }

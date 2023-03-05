@@ -20,7 +20,7 @@ const StyledFab = styled(Fab)({
   margin: "0 auto",
 });
 
-export default function PokedexMenu({ children, handlePokemonList }) {
+export default function PokedexMenu({ children, handleShowPokemonList }) {
   return (
     <>
       <CssBaseline />
@@ -34,19 +34,19 @@ export default function PokedexMenu({ children, handlePokemonList }) {
           <StyledFab
             color="primary"
             aria-label="add"
-            onClick={handlePokemonList}
+            onClick={handleShowPokemonList}
           >
             <CatchingPokemonIcon />
           </StyledFab>
           <Divider />
 
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton color="inherit">
+          {/* <IconButton color="inherit">
             <SearchIcon />
           </IconButton>
           <IconButton color="inherit">
             <MoreIcon />
-          </IconButton>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
     </>

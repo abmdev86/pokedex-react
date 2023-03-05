@@ -1,6 +1,6 @@
-import { Box, Button, Container, Paper, Stack } from "@mui/material";
+import { Box, Button, Container, Paper, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import '../App.css'
+import "../App.css";
 export default function Pokedex() {
     const [pokemonList, setPokemonList] = useState([]);
     const [next, setNext] = useState(null);
@@ -13,7 +13,9 @@ export default function Pokedex() {
         setIsLoading(true);
         const newList = async () => {
             try {
-                const response = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=25");
+                const response = await fetch(
+                    "https://pokeapi.co/api/v2/pokemon/?limit=25"
+                );
                 if (response.ok) {
                     let newPokedexList = await response.json();
 
@@ -40,7 +42,7 @@ export default function Pokedex() {
     }, []);
 
     const handleNext = async () => {
-        if (!next || next === '') return;
+        if (!next || next === "") return;
         setIsLoading(true);
         const response = await fetch(next);
         if (response.ok) {
@@ -52,14 +54,12 @@ export default function Pokedex() {
 
             setIsLoading(false);
         }
-
-
-    }
+    };
 
     const handlePrevious = async () => {
         try {
             if (!previous || previous === "") return;
-            setIsLoading(true)
+            setIsLoading(true);
             const response = await fetch(previous);
 
             if (response.ok) {
@@ -73,34 +73,57 @@ export default function Pokedex() {
         } catch (err) {
             console.error(err.message, err);
             setIsLoading(false);
-
         }
-
-    }
+    };
 
     return (
         <Container maxWidth="sm">
-            {
-                !isLoading ? (
-                    <Container maxWidth="sm" sx={{ marginBottom: 6, paddingBottom: 2, }}>
-                        <Stack spacing={2}>
-                            {pokemonList?.map((p, index) => (
-                                <Box key={index} sx={{ textAlign: 'center' }}>
-                                    <Paper key={index} square elevation={13}>{p.name}</Paper>
-
-                                </Box>
-                            ))}
-                        </Stack>
-                        <Box sx={{ margin: 'auto', p: 2, display: { sm: 'block', md: 'flex', }, textAlign: 'center' }}>
-                            <Button className="pokedex--btn" variant="contained" onClick={handlePrevious} sx={{ margin: '.5em' }} >Previous</Button>
-                            <Button className="pokedex--btn" variant="contained" onClick={handleNext} sx={{ margin: '.5em' }}  >Next</Button>
-
-                        </Box>
-                    </Container>) : (
-                    <div>LOADING....</div>
-                )
-            }
+            {!isLoading ? (
+                <Container maxWidth="sm" sx={{ marginBottom: 6, paddingBottom: 2 }}>
+                    <Stack spacing={2}>
+                        {pokemonList?.map((p, index) => (
+                            <Box key={index} sx={{ textAlign: "center" }}>
+                                <Paper key={index} square elevation={13}>
+                                    {p.name}
+                                </Paper>
+                            </Box>
+                        ))}
+                    </Stack>
+                    <Box
+                        sx={{
+                            margin: "auto",
+                            p: 2,
+                            display: { sm: "block", md: "flex" },
+                            textAlign: "center",
+                        }}
+                    >
+                        <Button
+                            className="pokedex--btn"
+                            variant="contained"
+                            onClick={handlePrevious}
+                            sx={{ margin: ".5em" }}
+                        >
+                            Previous
+                        </Button>
+                        <Button
+                            className="pokedex--btn"
+                            variant="contained"
+                            onClick={handleNext}
+                            sx={{ margin: ".5em" }}
+                        >
+                            Next
+                        </Button>
+                    </Box>
+                </Container>
+            ) : (
+                <Container maxWidth="sm" sx={{ textAlign: 'center' }}>
+                    <Box sx={{ flexGrow: 1 }}>
+                        <Typography variant="h6">
+                            Loading...
+                        </Typography>
+                    </Box>
+                </Container>
+            )}
         </Container>
-    )
-
+    );
 }

@@ -1,6 +1,7 @@
-import { Box, Button, Container, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import "../App.css";
+import PokedexListDisplay from "./PokedexListDisplay";
 export default function Pokedex() {
     const [pokemonList, setPokemonList] = useState([]);
     const [next, setNext] = useState(null);
@@ -81,13 +82,11 @@ export default function Pokedex() {
             {!isLoading ? (
                 <Container maxWidth="sm" sx={{ marginBottom: 6, paddingBottom: 2 }}>
                     <Stack spacing={2}>
-                        {pokemonList?.map((p, index) => (
-                            <Box key={index} sx={{ textAlign: "center" }}>
-                                <Paper key={index} square elevation={13}>
-                                    {p.name}
-                                </Paper>
-                            </Box>
-                        ))}
+                        {
+                            pokemonList?.map((p, index) => (
+                                <PokedexListDisplay key={index} name={p.name} />
+                            ))
+                        }
                     </Stack>
                     <Box
                         sx={{

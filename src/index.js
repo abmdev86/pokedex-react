@@ -4,12 +4,26 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ErrorBoundary from "./ErrorBoundary";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Pokemon from "./Pages/Pokemon";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "pokemon/:name",
+    element: <Pokemon />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <ErrorBoundary>
-      <App />
+      <RouterProvider router={router} />
     </ErrorBoundary>
   </React.StrictMode>
 );

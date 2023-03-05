@@ -1,4 +1,4 @@
-import { Alert, Link } from "@mui/material";
+import { Alert } from "@mui/material";
 import React from "react";
 
 export default class ErrorBoundary extends React.Component {

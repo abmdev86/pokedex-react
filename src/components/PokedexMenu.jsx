@@ -1,15 +1,8 @@
-import {
-  AppBar,
-  CssBaseline,
-  Divider,
-  Fab,
-  IconButton,
-  Toolbar,
-} from "@mui/material";
+import { AppBar, Container, CssBaseline, Divider, Fab, Toolbar } from "@mui/material";
 import styled from "@emotion/styled";
-import MoreIcon from "@mui/icons-material/More";
+
 import { Box } from "@mui/system";
-import SearchIcon from "@mui/icons-material/Search";
+
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 const StyledFab = styled(Fab)({
   position: "absolute",
@@ -22,7 +15,7 @@ const StyledFab = styled(Fab)({
 
 export default function PokedexMenu({ children, handleShowPokemonList }) {
   return (
-    <>
+    <Container maxWidth="sm">
       <CssBaseline />
       {children}
       <AppBar
@@ -41,14 +34,8 @@ export default function PokedexMenu({ children, handleShowPokemonList }) {
           <Divider />
 
           <Box sx={{ flexGrow: 1 }} />
-          {/* <IconButton color="inherit">
-            <SearchIcon />
-          </IconButton>
-          <IconButton color="inherit">
-            <MoreIcon />
-          </IconButton> */}
         </Toolbar>
       </AppBar>
-    </>
+    </Container>
   );
 }

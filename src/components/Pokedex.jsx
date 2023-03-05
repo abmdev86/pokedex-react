@@ -8,6 +8,8 @@ export default function Pokedex() {
     const [previous, setPrevious] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+
+
     useEffect(() => {
         let ignore = false;
         setPokemonList([]);
@@ -15,11 +17,11 @@ export default function Pokedex() {
         const newList = async () => {
             try {
                 const response = await fetch(
-                    "https://pokeapi.co/api/v2/pokemon/?limit=25"
+                    process.env.REACT_APP_BASEURL
                 );
                 if (response.ok) {
                     let newPokedexList = await response.json();
-
+                    console.log(newPokedexList)
                     if (!ignore) {
                         setNext(newPokedexList.next);
                         setPokemonList(newPokedexList.results);

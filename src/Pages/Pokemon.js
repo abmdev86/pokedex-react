@@ -15,10 +15,9 @@ export default function Pokemon() {
     const getCurrentPokemon = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BASEURL}${name}`,
+          `${"https://pokeapi.co/api/v2/pokemon/"}${name}`,
           {
             headers: {
-              "Content-Type": "application/json",
               Accept: "application/json",
             },
           }

@@ -50,7 +50,7 @@ const MoveList = ({ moves }) => {
 export default function PokemonDashboard({ pokemon }) {
     return (
         <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} >
                 <Paper elevation={12} sx={{ mt: 2, backgroundColor: "#EDEAD1" }}>
                     <Avatar
                         sx={{ width: 125, height: 125, m: "auto" }}
@@ -78,15 +78,14 @@ export default function PokemonDashboard({ pokemon }) {
                         </Divider>
                         <Typography variant="h6">{pokemon?.base_experience}</Typography>
                     </Box>
+                    <PokemonTypeCard types={pokemon?.types} />
                 </Paper>
             </Grid>
-            <Grid item xs={12} md={6}>
-                <PokemonTypeCard types={pokemon?.types} />
-            </Grid>
-            <Grid item xs={12} md={6}>
+
+            <Grid item xs={12} >
                 <PokemonStatSheet stats={pokemon?.stats} />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} >
                 <Paper elevation={12} sx={{ mt: 2 }}>
                     <MoveList moves={pokemon?.moves} />
                 </Paper>

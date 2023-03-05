@@ -1,14 +1,22 @@
+import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import {
     AppBar,
     Box,
-
+    IconButton,
     Toolbar,
     Typography,
 } from "@mui/material";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NavBar({ children, pageName }) {
+
+    const navigate = useNavigate();
+
+    const handleGoBack = () => {
+        navigate(-1);
+    }
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar
@@ -22,12 +30,15 @@ export default function NavBar({ children, pageName }) {
                 }}
             >
                 <Toolbar>
-
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <IconButton onClick={handleGoBack} aria-label="back" sx={{ mr: 2, ml: 0 }}>
+                        <ArrowBackIosNewIcon />BACK
+                    </IconButton>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} href='/'>
                         {pageName ?? "Welcome to the Pokedex"}
                     </Typography>
 
-                    <Link to="/">HOME</Link>
+                    <Link to="/"><CatchingPokemonIcon /></Link>
+
                 </Toolbar>
             </AppBar>
             {children}

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+import NavBar from "./components/NavBar";
+import Pokedex from "./components/Pokedex";
 import PokedexMenu from "./components/PokedexMenu";
-import PokemonList from "./components/PokemonList";
 
 function App() {
   const [isPokedex, setIsPokedex] = useState(false);
@@ -12,9 +13,11 @@ function App() {
   };
 
   return (
-    <PokedexMenu handlePokemonList={handleShowPokedex}>
-      {isPokedex ? <PokemonList /> : null}
-    </PokedexMenu>
+    <NavBar pageName="POKEDEX">
+      <PokedexMenu handleShowPokemonList={handleShowPokedex}>
+        {isPokedex ? <Pokedex /> : null}
+      </PokedexMenu>
+    </NavBar>
   );
 }
 

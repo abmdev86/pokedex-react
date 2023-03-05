@@ -12,7 +12,7 @@ import {
   TablePagination,
   TableFooter,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import data from "../Data/pokedex.json";
 import PropTypes from "prop-types";
 import {

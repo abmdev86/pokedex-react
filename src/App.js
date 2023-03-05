@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Pokedex from "./components/Pokedex";
 import PokedexMenu from "./components/PokedexMenu";
+import Welcome from "./components/Welcome";
 
 function App() {
   const [isPokedex, setIsPokedex] = useState(false);
@@ -15,7 +16,7 @@ function App() {
   return (
     <NavBar pageName="POKEDEX">
       <PokedexMenu handleShowPokemonList={handleShowPokedex}>
-        {isPokedex ? <Pokedex /> : null}
+        {isPokedex ? <Pokedex /> : <Welcome />}
       </PokedexMenu>
     </NavBar>
   );

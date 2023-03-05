@@ -1,21 +1,19 @@
-import { Box, Container, Typography } from "@mui/material";
-import NavBar from "./NavBar";
+import { Box } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
 export default function LoadingComponent() {
 
     return (
-        <Container maxWidth="sm" sx={{ textAlign: 'center' }}>
-            <NavBar pageName="LOADING">
 
-                <Box sx={{ flexGrow: 1 }}>
-                    <Typography variant="h6">
-                        Loading...
-                    </Typography>
-                </Box>
-            </NavBar>
 
-        </Container>
+
+        <Box sx={{ display: 'flex', p: 5, mt: '50vh' }}>
+            <CircularProgress sx={{ m: 'auto' }} />
+        </Box>
+
+
+
     )
 }

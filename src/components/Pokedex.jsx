@@ -18,9 +18,9 @@ export default function Pokedex() {
         const newList = async () => {
             try {
                 const response = await fetch(
-                    process.env.REACT_APP_BASEURL, {
+                    "https://pokeapi.co/api/v2/pokemon/", {
                     headers: {
-                        'Content-Type': 'application/json',
+
                         'Accept': 'application/json'
                     }
 

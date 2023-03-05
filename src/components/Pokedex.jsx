@@ -9,26 +9,20 @@ export default function Pokedex() {
     const [previous, setPrevious] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-
-
     useEffect(() => {
         let ignore = false;
         setPokemonList([]);
         setIsLoading(true);
         const newList = async () => {
             try {
-                const response = await fetch(
-                    "https://pokeapi.co/api/v2/pokemon/", {
+                const response = await fetch("https://pokeapi.co/api/v2/pokemon/", {
                     headers: {
-
-                        'Accept': 'application/json'
-                    }
-
-                }
-                );
+                        Accept: "application/json",
+                    },
+                });
                 if (response.ok) {
                     let newPokedexList = await response.json();
-                    console.log(newPokedexList)
+                    console.log(newPokedexList);
                     if (!ignore) {
                         setNext(newPokedexList.next);
                         setPokemonList(newPokedexList.results);
@@ -91,11 +85,9 @@ export default function Pokedex() {
             {!isLoading ? (
                 <Container maxWidth="sm" sx={{ marginBottom: 6, paddingBottom: 2 }}>
                     <Stack spacing={2}>
-                        {
-                            pokemonList?.map((p, index) => (
-                                <PokedexListDisplay key={index} name={p.name} />
-                            ))
-                        }
+                        {pokemonList?.map((p, index) => (
+                            <PokedexListDisplay key={index} name={p.name} />
+                        ))}
                     </Stack>
                     <Box
                         sx={{

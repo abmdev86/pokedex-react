@@ -1,6 +1,7 @@
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 import "../App.css";
+import LoadingComponent from "./LoadingComponent";
 import PokedexListDisplay from "./PokedexListDisplay";
 export default function Pokedex() {
     const [pokemonList, setPokemonList] = useState([]);
@@ -117,13 +118,7 @@ export default function Pokedex() {
                     </Box>
                 </Container>
             ) : (
-                <Container maxWidth="sm" sx={{ textAlign: 'center' }}>
-                    <Box sx={{ flexGrow: 1 }}>
-                        <Typography variant="h6">
-                            Loading...
-                        </Typography>
-                    </Box>
-                </Container>
+                <LoadingComponent />
             )}
         </Container>
     );

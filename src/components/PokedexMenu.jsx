@@ -21,7 +21,7 @@ export default function PokedexMenu({ children, handleShowPokemonList }) {
       <AppBar
         position="fixed"
         color="primary"
-        sx={{ top: "auto", bottom: 0, backgroundColor: "red" }}
+        sx={{ top: "auto", bottom: 0, backgroundColor: "#CC0000" }}
       >
         <Toolbar>
           <StyledFab

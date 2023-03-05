@@ -1,7 +1,9 @@
 import { Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import NavBar from "../components/NavBar";
+import LoadingComponent from "../components/LoadingComponent";
+import PokemonDashboard from "../components/PokemonDashboard";
 export default function Pokemon() {
   const [currentPokemon, setCurrentPokemon] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +21,7 @@ export default function Pokemon() {
           let newPokemonData = await response.json();
           if (!ignore) {
             setCurrentPokemon(newPokemonData);
+            setIsLoading(false);
           }
         }
       } catch (err) {
@@ -32,5 +35,16 @@ export default function Pokemon() {
       ignore = true;
     };
   }, [name]);
-  return <Container maxWidth="sm">{currentPokemon?.name}</Container>;
+
+  return (
+    <>
+      {!isLoading ? (
+        <NavBar pageName={`${currentPokemon?.name.toUpperCase()}'s Dashboard`}>
+          <PokemonDashboard pokemon={currentPokemon} />
+        </NavBar>
+      ) : (
+        <LoadingComponent />
+      )}
+    </>
+  );
 }
